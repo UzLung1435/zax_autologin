@@ -1,0 +1,11 @@
+Package: zax
+Version: 0.1.0-0
+Depends: libc, luci-compat
+Source: /feed/openwrt
+SourceName: zaxConnect
+License: GPL-3.0-only
+Section: net
+SourceDateEpoch: 1711267200
+Architecture: all
+Installed-Size:  2181120
+Description: You! Do the login by hand off!

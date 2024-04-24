@@ -1,0 +1,27 @@
+#!/bin/sh /etc/rc.common
+
+START=99
+STOP=15
+
+
+
+start_service() {
+    config_load zax
+    local enabled
+    config_get_bool enabled "enabled" "enabled" "0"
+    if [ "$enabled" -ne "1" ]; then
+        return 1
+    fi
+	echo "zax net start"
+	/usr/bin/zax.sh &
+}
+
+reload_service() {
+    stop
+    start
+}
+
+service_triggers() {
+    procd_add_reload_trigger zax.sh
+}
+

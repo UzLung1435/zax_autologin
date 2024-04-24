@@ -1,37 +1,9 @@
-# zax_autologin
-ZAXSOFT 石斧软件校园网自动登录脚本
+# zax_autologin-openwrt
+ZAXSOFT 石斧软件校园网OpenWrt自动登录脚本
 
 # 使用方法
-修改[net.sh](https://github.com/JiangTx/zax_autologin/blob/main/net.sh) 中
 
-userId='用户名'
-
-passwd='密码'
-
-按需修改认证网页地址/认证服务器wlanacip/认证vlan/认证wlanacname
-
-# net.service 使用
-
-net.service放置在/etc/init.d目录下  设置为开机自启动
-
-service net.service start | stop | restart
-
-添加计划任务(可选)
-
-# 适用场景
-登录界面为
-
-<img src="img/pc-login.png" alt="img" style="zoom:80%;" />
-自助管理登录界面为
-
-<img src="img/self-login.png" alt="img" style="zoom:80%;" />
-
-# 使用报告
-在OpenWRT设备测试通过 LED代码适配京东云一代
-
-京东云一代使用 ShellClash & [UA3F](https://github.com/SunBK201/UA3F/blob/master/README.md#ua3f) 在100Mbps下宽带尚为可用 
-
-MT7621 的性能已经很吃力了 建议需要跑UA3F(防共享检测)的同学使用性能更好的路由器
+下载完整源码到/tmp下，运行install.sh
 
 
 # 校园网多设备检测
@@ -40,14 +12,22 @@ MT7621 的性能已经很吃力了 建议需要跑UA3F(防共享检测)的同学
 
 [UA2F](https://github.com/Zxilly/UA2F)
 
+注：近日发现仲恺白云校区似乎加强了检测，所有的数据包都会被检测，因而性能不够的路由器可能会导致频繁掉线，请知悉。
+
+这边推荐使用性能大于mt7981(wr30u)的路由器。
+
+# TODO
+ - [ ] 完善 Luci 的 Configuration
+ - [ ] 简化安装
+
 
 # 提点思路
 
-可自定义User-Agent  需要和防检测软件一起修改
+ - [x] 可自定义User-Agent ~~需要和防检测软件一起修改~~直接获取ua2f的uci config实现
 
-可实现一台路由器认证为手机   另一台路由器认证为电脑
+ - [x] 可实现一台路由器认证为手机   另一台路由器认证为电脑 实现原理同上
 
-若还有多余的路由器就可以实现多拨
+~~若还有多余的路由器就可以实现多拨~~ 请使用mwan3进行聚合
 
 # 声明
 
@@ -62,3 +42,6 @@ MT7621 的性能已经很吃力了 建议需要跑UA3F(防共享检测)的同学
 [Jin-Cheng-Ming/ZHKU-Connector](https://github.com/Jin-Cheng-Ming/ZHKU-Connector)
 
 [LingMessy/zkNet](https://github.com/LingMessy/zkNet)
+
+# 特别鸣谢
+[SunBK201/UA3F](https://github.com/SunBK201/UA3F) -> Luci页面与install参考XD

@@ -1,0 +1,9 @@
+config 'zax' 'enabled'
+    option enabled '0'
+
+config 'zax' 'main'
+    option loginaddr 'loginaddr'
+    option username 'username'
+    option password 'passwd'
+    option zaxbras 'zkbras1'
+    option retrysec '3'
